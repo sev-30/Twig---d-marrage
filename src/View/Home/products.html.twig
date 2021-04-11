@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{# Dans cette vue, en utilisant la syntaxe de Twig, tu dois boucler sur le tableau et
+afficher les produits dans des blocs distincts, à raison de 3 articles par ligne. #}
+
+{% block content %}
+       <h1>Hello Wilder !</h1>
+       <table>
+        <thead>
+          <tr>
+          <th>Tableau produits</th>
+          </tr>
+    </thead>
+    <tbody>
+         <tr>
+                {% for value in products %}
+        
+
+                        {% if loop.index is divisible by(3) %} {# si vérifie si valeur est divisible par 3#} 
+                                <td>{{value}}</td></tr> <tr> {#si oui saut de ligne ok #}
+                 
+                        {% else  %} {# sinon ca saute pas de ligne #}
+                                <td>{{ value }}</td> 
+
+                        {% endif %}
+
+                {% endfor %}    
+        </tr>
+    </tbody>
+</table>
+
+
+{# Puis sous la liste des produits, affiche le resultat d'un dump() du tableau de produit que tu as envoyé à ta page Twig. #}
+<pre>
+    {{ dump(products) }}
+</pre>
+
+{% endblock %}
